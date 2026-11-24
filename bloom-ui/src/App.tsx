@@ -13,7 +13,7 @@ export default function App() {
   return (
     <div className="app">
       <header className="topbar">
-        <h1>Free Store</h1>
+        <h1>Service Portal</h1>
         <nav>
           <NavLink to="/checkin">Check-in</NavLink>
           <NavLink to="/checkout">Checkout</NavLink>
