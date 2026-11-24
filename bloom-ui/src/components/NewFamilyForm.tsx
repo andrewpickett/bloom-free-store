@@ -14,6 +14,7 @@ export default function NewFamilyForm({ onCreated, onCancel }: Props) {
   const [displayName, setDisplayName] = useState('')
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
+  const [address, setAddress] = useState('')
   const [zip, setZip] = useState('')
   const [notes, setNotes] = useState('')
   const [members, setMembers] = useState<Member[]>([blankMember(false)])
@@ -36,6 +37,7 @@ export default function NewFamilyForm({ onCreated, onCancel }: Props) {
         display_name: displayName.trim(),
         phone: phone.trim() || undefined,
         email: email.trim() || undefined,
+        address: address.trim() || undefined,
         zip: zip.trim() || undefined,
         notes: notes.trim() || undefined,
         members: members.map((m) => ({
@@ -73,6 +75,12 @@ export default function NewFamilyForm({ onCreated, onCancel }: Props) {
         <label>
           Email
           <input value={email} onChange={(e) => setEmail(e.target.value)} inputMode="email" />
+        </label>
+      </div>
+      <div className="row">
+        <label>
+          Address
+          <input value={address} onChange={(e) => setAddress(e.target.value)} />
         </label>
         <label className="narrow">
           ZIP

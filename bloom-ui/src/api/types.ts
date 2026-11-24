@@ -26,6 +26,7 @@ export interface NewFamilyInput {
   display_name: string
   phone?: string
   email?: string
+  address?: string
   zip?: string
   notes?: string
   members: Member[]
