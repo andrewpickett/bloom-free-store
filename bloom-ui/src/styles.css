@@ -1,6 +1,5 @@
-/* Palette taken from the bloom logo:
-   orange #fbab18 (center petal) · yellow #fff336 (side petals) · gold #ffd44f (base swoosh)
-   on a warm near-black. Dark theme only. */
+/* Palette taken from the bloom logo: the darker orange #fbab18 is the accent (buttons, highlights);
+   soft gold #ffd44f only appears in the header stripe. Warm near-black surfaces. Dark theme only. */
 :root {
   color-scheme: dark;
 
@@ -13,13 +12,11 @@
   --text: #f6f1e6;
   --muted: #b3a98f;
 
-  --orange: #fbab18;
-  --dark-orange: #cf8907;
-  --darker-orange: #724c06;
-  --yellow: #fff336;
-  --gold: #ffd44f;
-  --gold-tint: rgba(255, 212, 79, 0.14);
-  --on-gold: #1a1405; /* dark text for use on gold/yellow fills */
+  --accent: #fbab18;            /* the logo's darker orange: buttons, highlights, active states */
+  --accent-hover: #ffbd45;
+  --accent-tint: rgba(251, 171, 24, 0.15);
+  --gold: #ffd44f;              /* only used for the end of the header stripe */
+  --on-accent: #1a1405;         /* dark text on accent fills */
 
   --ok-text: #a6e3bc;
   --ok-bg: rgba(110, 207, 143, 0.16);
@@ -60,8 +57,8 @@ h2 { font-size: 1.15rem; }
   padding: 10px 20px 12px;
   background: var(--topbar);
   color: var(--text);
-  border-bottom: 3px solid var(--gold);
-  border-image: linear-gradient(90deg, var(--dark-orange), var(--orange) 50%, var(--gold)) 1;
+  border-bottom: 3px solid var(--accent);
+  border-image: linear-gradient(90deg, var(--accent), var(--gold)) 1;
 }
 .topbar h1 {
   display: flex;
@@ -74,7 +71,7 @@ h2 { font-size: 1.15rem; }
   content: '';
   width: 55px;
   height: 40px;
-  background: url('/logo.webp') center / contain no-repeat;
+  background: url('/logo.png') center / contain no-repeat;
 }
 .topbar nav { display: flex; gap: 4px; flex: 1; flex-wrap: wrap; }
 .topbar nav a {
@@ -87,9 +84,9 @@ h2 { font-size: 1.15rem; }
 }
 .topbar nav a:hover { color: var(--text); background: var(--surface-2); }
 .topbar nav a.active {
-  color: var(--gold);
-  background: var(--gold-tint);
-  border-bottom-color: var(--gold);
+  color: var(--accent);
+  background: var(--accent-tint);
+  border-bottom-color: var(--accent);
 }
 
 .event-picker { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: var(--muted); }
@@ -151,14 +148,14 @@ main { padding: 20px; max-width: 1200px; margin: 0 auto; }
   color: var(--text);
   cursor: pointer;
 }
-.btn:hover:not(:disabled) { border-color: var(--gold); color: var(--gold); }
+.btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
 .btn:disabled { opacity: 0.45; cursor: not-allowed; }
-.btn.primary { background: var(--gold); border-color: var(--gold); color: var(--on-gold); }
-.btn.primary:hover:not(:disabled) { background: var(--dark-orange); border-color: var(--dark-orange); color: var(--on-gold); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.btn.primary:hover:not(:disabled) { background: var(--accent-hover); border-color: var(--accent-hover); color: var(--on-accent); }
 .btn.danger { background: var(--danger); border-color: var(--danger); color: #fff; }
 .btn.danger:hover:not(:disabled) { background: #de4a3b; border-color: #de4a3b; color: #fff; }
 .btn.ghost { border-color: transparent; background: transparent; min-width: 44px; padding: 8px; color: var(--muted); }
-.btn.ghost:hover:not(:disabled) { color: var(--gold); border-color: transparent; background: var(--gold-tint); }
+.btn.ghost:hover:not(:disabled) { color: var(--accent); border-color: transparent; background: var(--accent-tint); }
 .btn.big { min-height: 52px; font-size: 1.05rem; padding: 12px 28px; }
 
 /* ---------- Inputs ---------- */
@@ -174,7 +171,7 @@ input, select, textarea {
 }
 input::placeholder, textarea::placeholder { color: var(--muted); opacity: 0.8; }
 input:focus, select:focus, textarea:focus, .btn:focus-visible {
-  outline: 2px solid var(--gold);
+  outline: 2px solid var(--accent);
   outline-offset: 1px;
 }
 .search { margin-bottom: 12px; font-size: 1.05rem; }
@@ -182,7 +179,7 @@ input:focus, select:focus, textarea:focus, .btn:focus-visible {
 .form { display: flex; flex-direction: column; gap: 14px; }
 .form label, .row label { display: flex; flex-direction: column; gap: 4px; font-size: 0.9rem; font-weight: 600; flex: 1; }
 .form label.narrow { flex: 0 0 110px; }
-.req { color: var(--orange); }
+.req { color: var(--accent); }
 .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-end; }
 .member-row { align-items: center; flex-wrap: nowrap; margin-bottom: 8px; }
 .member-row input { flex: 1; min-width: 0; }
@@ -198,8 +195,8 @@ input:focus, select:focus, textarea:focus, .btn:focus-visible {
 
 fieldset { border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px 12px; margin: 0 0 14px; }
 legend { padding: 0 6px; font-weight: 700; font-size: 0.9rem; color: var(--muted); }
-fieldset.sized { border-color: var(--gold); background: var(--gold-tint); }
-fieldset.sized legend { color: var(--gold); }
+fieldset.sized { border-color: var(--accent); background: var(--accent-tint); }
+fieldset.sized legend { color: var(--accent); }
 
 /* ---------- Lists ---------- */
 .list { list-style: none; margin: 0; padding: 0; }
@@ -216,8 +213,8 @@ fieldset.sized legend { color: var(--gold); }
 .list li.clickable { cursor: pointer; border-radius: 8px; }
 .list li.clickable:hover { background: var(--surface-2); }
 .list li.selected {
-  background: var(--gold-tint);
-  border-left-color: var(--gold);
+  background: var(--accent-tint);
+  border-left-color: var(--accent);
   border-radius: 8px;
 }
 .list li.empty, p.empty, td.empty { color: var(--muted); justify-content: center; text-align: center; padding: 18px; }
@@ -236,7 +233,7 @@ fieldset.sized legend { color: var(--gold); }
   font-weight: 600;
   white-space: nowrap;
 }
-.pill.ok { background: var(--gold-tint); color: var(--gold); border-color: transparent; }
+.pill.ok { background: var(--accent-tint); color: var(--accent); border-color: transparent; }
 .totals { display: flex; gap: 8px; flex-wrap: wrap; }
 
 .tag { font-size: 0.75rem; font-weight: 700; padding: 3px 8px; border-radius: 6px; background: var(--surface-2); border: 1px solid var(--line); }
@@ -254,7 +251,7 @@ fieldset.sized legend { color: var(--gold); }
   border: 1px solid var(--line);
   border-radius: 8px;
 }
-.item.has { border-color: var(--orange); background: var(--surface-2); }
+.item.has { border-color: var(--accent); background: var(--surface-2); }
 .item-name { font-weight: 600; font-size: 0.92rem; }
 .stepper { display: flex; align-items: center; gap: 4px; }
 .stepper .btn { min-width: 44px; padding: 8px 0; font-size: 1.2rem; }
@@ -265,15 +262,13 @@ fieldset.sized legend { color: var(--gold); }
 .stat {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-top: 3px solid var(--gold);
+  border-top: 3px solid var(--accent);
   border-radius: var(--radius);
   padding: 18px;
   display: flex;
   flex-direction: column;
 }
-.stat:nth-child(1) { border-top-color: var(--darker-orange); }
-.stat:nth-child(2) { border-top-color: var(--dark-orange); }
-.stat-num { font-size: 2.2rem; font-weight: 800; color: var(--gold); }
+.stat-num { font-size: 2.2rem; font-weight: 800; color: var(--accent); }
 .stat-label { color: var(--muted); font-weight: 600; }
 
 table { width: 100%; border-collapse: collapse; margin-top: 10px; }
@@ -296,7 +291,7 @@ th { font-size: 0.82rem; color: var(--muted); text-transform: uppercase; letter-
 .modal {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-top: 3px solid var(--gold);
+  border-top: 3px solid var(--accent);
   border-radius: var(--radius);
   padding: 20px;
   width: 100%;
