@@ -5,12 +5,12 @@ export type Msg = { kind: 'ok' | 'error'; text: string }
 export const errMsg = (e: unknown): string => (e instanceof Error ? e.message : String(e))
 export const errBanner = (e: unknown): Msg => ({ kind: 'error', text: errMsg(e) })
 
-export const todayISO = (): string => new Date().toLocaleDateString('en-CA')
+export const todayISO = (): string => new Date().toLocaleDateString('en-US')
 
 export const daysAgoISO = (n: number): string => {
   const d = new Date()
   d.setDate(d.getDate() - n)
-  return d.toLocaleDateString('en-CA')
+  return d.toLocaleDateString('en-US')
 }
 
 export const formatTime = (iso: string): string =>
@@ -31,13 +31,12 @@ export function useDebounced<T>(value: T, ms = 250): T {
   return v
 }
 
+// TODO: Pull this from the database table??
 export const CATEGORY_LABEL: Record<string, string> = {
-  diaper: 'Diapers',
-  pullup: 'Pull-ups',
+  diapers: 'Diapers',
+  pullups: 'Pull-ups',
   clothing: 'Clothing',
-  hygiene: 'Hygiene',
-  household: 'Household',
-  other: 'Other',
+  accessories: 'Accessories'
 }
 export const categoryLabel = (c: string): string =>
   CATEGORY_LABEL[c] ?? c.charAt(0).toUpperCase() + c.slice(1)

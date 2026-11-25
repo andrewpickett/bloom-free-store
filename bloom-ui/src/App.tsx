@@ -18,6 +18,8 @@ export default function App() {
           <NavLink to="/checkin">Check-in</NavLink>
           <NavLink to="/checkout">Checkout</NavLink>
           <NavLink to="/events">Events</NavLink>
+          <NavLink to="/volunteers">Volunteers</NavLink>
+          <NavLink to="/donors">Donors</NavLink>
           <NavLink to="/reports">Reports</NavLink>
         </nav>
         <label className="event-picker">
@@ -46,6 +48,8 @@ export default function App() {
           <Route path="/checkin" element={<CheckInPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/events" element={<EventsPage />} />
+          <Route path="/volunteers" element={<p>Volunteers page not implemented yet.</p>} />
+          <Route path="/donors" element={<p>Donors page not implemented yet.</p>} />
           <Route path="/reports" element={<ReportsPage />} />
           <Route path="*" element={<p>Page not found.</p>} />
         </Routes>
